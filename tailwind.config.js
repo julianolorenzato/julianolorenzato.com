@@ -2,7 +2,14 @@
 export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
-		extend: {}
+		extend: {
+			colors: {
+				brand: {
+					primary: '#a8e063',
+					secondary: '#20232a'
+				}
+			}
+		}
 	},
 	plugins: []
 }
