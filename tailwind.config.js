@@ -5,7 +5,8 @@ export default {
 		extend: {
 			colors: {
 				brand: {
-					primary: '#a8e063',
+					sky: '#18a5d6',
+					cream: '#f6f1eb',
 					secondary: '#20232a'
 				}
 			}
