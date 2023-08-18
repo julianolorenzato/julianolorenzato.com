@@ -1,19 +1,12 @@
-<nav class="py-1 border-b border-stone-800">
+<div class="h-8" />
+
+<nav class="fixed top-0 h-8 w-full z-40 py-1 border-b bg-white text-stone-800 border-stone-800">
 	<ul class="flex gap-4 justify-center">
-		<li>GitHub</li>
-		<li>LinkedIn</li>
+		<li class="hover:underline cursor-pointer">
+			<a target="_blank" href="https://github.com/julianolorenzato">GitHub</a>
+		</li>
+		<li class="hover:underline cursor-pointer">
+			<a target="_blank" href="https://linkedin.com/in/julianolorenzato/">LinkedIn</a>
+		</li>
 	</ul>
 </nav>
-
-<style>
-	nav {
-		background: rgb(146, 62, 255);
-		background: linear-gradient(
-			45deg,
-			rgba(146, 62, 255, 1) 0%,
-			rgba(213, 0, 255, 1) 34%,
-			rgba(255, 10, 180, 1) 66%,
-			rgba(255, 65, 98, 1) 100%
-		);
-	}
-</style>
