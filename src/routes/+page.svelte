@@ -1,7 +1,13 @@
 <script lang="ts">
-	import About from '../lib/components/About.svelte'
 	import Hero from '../lib/components/Hero.svelte'
+	import Header from '$lib/components/Header.svelte'
 </script>
 
-<Hero />
-<About />
+<svelte:head>
+	<title>Juliano Lorenzato - Software Developer</title>
+</svelte:head>
+
+<div class="h-screen flex flex-col bg-brand-cream">
+	<Header />
+	<Hero />
+</div>

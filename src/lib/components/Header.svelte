@@ -1,6 +1,4 @@
-<div class="h-8" />
-
-<nav class="fixed top-0 h-8 w-full z-40 py-1 border-b bg-white text-stone-800 border-stone-800">
+<nav class="basis-6 flex items-center justify-center w-full py-4 text-gray-900">
 	<ul class="flex gap-4 justify-center">
 		<li class="hover:underline cursor-pointer">
 			<a target="_blank" href="https://github.com/julianolorenzato">GitHub</a>
