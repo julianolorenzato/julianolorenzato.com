@@ -1,13 +1,15 @@
 <script lang="ts">
-	import Hero from '../lib/components/Hero.svelte'
-	import Header from '$lib/components/Header.svelte'
+	import Avatar from '$lib/components/Avatar.svelte'
+	import Title from '$lib/components/Title.svelte'
 </script>
 
 <svelte:head>
 	<title>Juliano Lorenzato - Software Developer</title>
 </svelte:head>
 
-<div class="h-screen flex flex-col bg-brand-cream">
-	<Header />
-	<Hero />
-</div>
+<section
+	class="min-h-[calc(100vh-80px)] flex-grow flex items-center gap-4 justify-center flex-col-reverse md:flex-row"
+>
+	<Title />
+	<Avatar />
+</section>

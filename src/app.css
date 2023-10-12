@@ -7,8 +7,15 @@
 	box-sizing: border-box;
 }
 
-/* body {
-	height: 100vh;
+body {
+	/* height: 100vh;
 	display: flex;
-	flex-direction: column;
-} */
+	flex-direction: column; */
+	@apply bg-brand-cream
+}
+
+.rainbow {
+	background: rgb(224, 6, 140);
+	background: linear-gradient(90deg, rgba(224, 6, 140, 1) 0%, rgba(196, 35, 15, 1) 50%, rgba(255, 178, 0, 1) 100%);
+	@apply px-0.5 rounded-sm text-white;
+}
