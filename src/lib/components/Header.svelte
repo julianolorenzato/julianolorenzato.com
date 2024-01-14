@@ -17,7 +17,7 @@
 		</li>
 		•
 		<li class="hover:underline cursor-pointer">
-			<a download href="/pt-resume.pdf">Resume</a>
+			<a download href="/resume.pdf">Resume</a>
 		</li>
 	</ul>
 </nav>
