@@ -1,5 +1,9 @@
 <script lang="ts">
-    import { PUBLIC_GITHUB_API_URL } from '$env/static/public'
+	import type { PageData } from "./$types"
+
+    export let data: PageData
 </script>
 
-<h1>Here are my projects {PUBLIC_GITHUB_API_URL}</h1>
+{#each data.repos as repo}
+    <h1>{repo.name}</h1>
+{/each}
