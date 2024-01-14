@@ -6,8 +6,6 @@ on:
 
 jobs:
   build_site:
-    env:
-      PUBLIC_GITHUB_API_URL: testss
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -30,6 +28,7 @@ jobs:
 
       - name: build
         env:
+          PUBLIC_GITHUB_API_URL: testss
           BASE_PATH: '/${{ github.event.repository.name }}'
         run: |
           npm run build
