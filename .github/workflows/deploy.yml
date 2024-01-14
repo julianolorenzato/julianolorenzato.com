@@ -28,7 +28,7 @@ jobs:
 
       - name: build
         env:
-          PUBLIC_GITHUB_API_URL: testss
+          PUBLIC_GITHUB_API_URL: ${{ vars.PUBLIC_GITHUB_API_URL }}
           BASE_PATH: '/${{ github.event.repository.name }}'
         run: |
           npm run build
