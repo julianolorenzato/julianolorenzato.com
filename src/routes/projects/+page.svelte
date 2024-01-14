@@ -1,6 +1,5 @@
 <script lang="ts">
-    import { env } from '$env/dynamic/public'
-    const a = env.PUBLIC_GITHUB_API_URL
+    import { PUBLIC_GITHUB_API_URL } from '$env/static/public'
 </script>
 
-<h1>Here are my projects ${a}</h1>
+<h1>Here are my projects {PUBLIC_GITHUB_API_URL}</h1>

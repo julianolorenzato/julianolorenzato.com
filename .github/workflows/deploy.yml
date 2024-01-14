@@ -6,6 +6,8 @@ on:
 
 jobs:
   build_site:
+    env:
+      PUBLIC_GITHUB_API_URL: ${{ vars.PUBLIC_GITHUB_API_URL }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
