@@ -31,7 +31,8 @@ jobs:
           PUBLIC_GITHUB_API_URL: some
           BASE_PATH: '/${{ github.event.repository.name }}'
         run: |
-          npm run build
+          npm run build &&
+          echo $PUBLIC_GITHUB_API_URL
 
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v2
