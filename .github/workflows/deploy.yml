@@ -1,6 +1,9 @@
 name: Deploy to GitHub Pages
 
 on:
+  schedule:
+    # Runs this workflow every day at 2:40 am UTC
+    - cron: '40 2 * * *'
   push:
     branches: 'master'
 
@@ -28,7 +31,6 @@ jobs:
 
       - name: build
         env:
-          PUBLIC_GITHUB_API_URL: '${{ vars.PUBLIC_GITHUB_API_URL }}'
           BASE_PATH: '/${{ github.event.repository.name }}'
         run: |
           npm run build
