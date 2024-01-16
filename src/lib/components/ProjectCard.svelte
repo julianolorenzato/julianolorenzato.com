@@ -1,11 +1,11 @@
 <script lang="ts">
-	import Modal from '$lib/components/Modal.svelte'
 	import { Github } from 'lucide-svelte'
 
 	export let name: string
 	export let language: string | null | undefined
 	export let description: string | null
 	export let topics: string[] = []
+	export let showReadme: boolean
 
 	const backgrounds: Record<string, string> = {
 		JavaScript: 'bg-[#f1e05a]',
@@ -27,11 +27,11 @@
 	function style(language: string | null | undefined) {
 		return language && backgrounds[language] ? backgrounds[language] : 'border border-black'
 	}
-
-	let show = false
 </script>
 
-<li class="flex flex-col justify-between gap-3 bg-slate-100 border border-black p-4 rounded-lg">
+<li
+	class="flex flex-col grow justify-between gap-3 bg-slate-100 border border-black p-4 rounded-lg"
+>
 	<div class="flex flex-col gap-2">
 		<div class="h-2 rounded-full w-full {style(language)}" />
 
@@ -61,11 +61,11 @@
 		</div>
 	</div>
 
-	<button
-		on:click={() => (show = true)}
-		class="self-center border border-transparent p-2 rounded-lg hover:border-gray-400 transition-all"
-		>Show README.md</button
-	>
+	{#if showReadme}
+		<a
+			href={`/${name}`}
+			class="self-center border border-transparent p-2 rounded-lg hover:border-gray-400 transition-all"
+			>Show README.md</a
+		>
+	{/if}
 </li>
-
-<Modal {name} bind:show />

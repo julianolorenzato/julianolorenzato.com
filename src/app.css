@@ -11,7 +11,21 @@ body {
 	/* height: 100vh;
 	display: flex;
 	flex-direction: column; */
-	@apply bg-brand-cream
+	@apply bg-brand-cream;
+
+}
+
+::-webkit-scrollbar {
+	@apply w-3;
+}
+
+::-webkit-scrollbar-track {
+	border-left: solid 1px black;
+	@apply bg-slate-100;
+}
+
+::-webkit-scrollbar-thumb {
+	@apply bg-gray-900;
 }
 
 .rainbow {

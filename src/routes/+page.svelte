@@ -18,10 +18,10 @@
 	<Avatar />
 </section>
 
-<h1 class="text-gray-900 font-semibold text-3xl mt-8">Some projects</h1>
+<h1 id="my-projects" class="text-gray-900 font-semibold text-3xl mt-8">My projects</h1>
 
 <ul class="my-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
 	{#each data.repos as { language, name, description, topics }}
-		<ProjectCard {language} {name} {description} {topics} />
+		<ProjectCard {language} {name} {description} {topics} showReadme={true} />
 	{/each}
 </ul>
