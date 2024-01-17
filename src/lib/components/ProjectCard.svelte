@@ -64,7 +64,7 @@
 	{#if showReadme}
 		<a
 			href={`/${name}`}
-			class="self-center border border-transparent p-2 rounded-lg hover:border-gray-400 transition-all"
+			class="self-center p-2 rounded-lg border border-gray-400 sm:border-transparent hover:border-gray-400 transition-all"
 			>Show README.md</a
 		>
 	{/if}

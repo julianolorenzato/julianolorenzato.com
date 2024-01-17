@@ -15,6 +15,8 @@
 </script>
 
 <svelte:head>
+	<title>{repo.name} | Juliano Lorenzato</title>
+
 	<link
 		rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.0/github-markdown.min.css"

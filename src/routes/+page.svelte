@@ -8,7 +8,7 @@
 </script>
 
 <svelte:head>
-	<title>Juliano Lorenzato - Software Developer</title>
+	<title>Juliano Lorenzato</title>
 </svelte:head>
 
 <section
