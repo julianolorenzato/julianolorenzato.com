@@ -1,7 +1,7 @@
-import { octokit } from '$lib/octokit'
-import type { PageLoad } from './$types'
+import { octokit } from '$lib/server/octokit'
+import type { PageServerLoad } from './$types'
 
-export const load: PageLoad = async ({ params: { name } }) => {
+export const load: PageServerLoad = async ({ params: { name } }) => {
 	const readme = await octokit.rest.repos
 		.getReadme({
 			owner: 'julianolorenzato',

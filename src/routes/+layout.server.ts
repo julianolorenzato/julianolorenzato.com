@@ -1,7 +1,7 @@
-import type { LayoutLoad } from './$types'
-import { octokit } from '$lib/octokit'
+import type { LayoutServerLoad } from './$types'
+import { octokit } from '$lib/server/octokit'
 
-export const load: LayoutLoad = async () => {
+export const load: LayoutServerLoad = async () => {
 	const repos = await octokit.rest.repos
 		.listForUser({
 			username: 'julianolorenzato',
