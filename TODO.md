@@ -1,0 +1,21 @@
+# Website To-Do
+
+- [x] Light/Dark Themes
+- [x] Github Icon
+- [x] LinkedIn Icon
+- [x] Layout
+- [x] Sitemap
+- [x] Robots.txt
+- [ ] CI/CD Script check grammar LLM
+- [ ] CI/CD Script correctness insights LLM
+- [ ] SEO
+- [ ] Code Syntax Highlight
+- [ ] Itch.io Icon
+- [ ] RSS
+- [ ] CTRL + K Command to Search
+- [ ] Blog Post Series (Part 1, 2, 3...)
+- [ ] Resume Page
+- [ ] About Page
+- [ ] Projects Page
+- [ ] Blog Page (categories, tags, filters, pagination etc...)
+- [ ] WYSIWYG Editor

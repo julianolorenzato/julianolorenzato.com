@@ -1,0 +1,110 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { generateExcerpt, calculateReadingTime } from "../utils";
+import Badge from "./Badge.astro";
+
+interface Props extends CollectionEntry<"blog"> {}
+
+const {
+  id,
+  body,
+  data: { title, tags, createdAt },
+} = Astro.props;
+
+const dateFormatter = new Intl.DateTimeFormat("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+---
+
+<article class="card">
+  <div class="header">
+    <a href={`/blog/${id}`}>
+      <h2>{title}</h2>
+    </a>
+
+    <span>
+      {dateFormatter.format(createdAt)} · {
+        calculateReadingTime(body ?? "").text
+      }
+    </span>
+  </div>
+
+  <ul class="tags">
+    {
+      tags.map((tag) => (
+        <li>
+          <Badge label={"#" + tag} />
+        </li>
+      ))
+    }
+  </ul>
+
+  <p class="excerpt">{generateExcerpt(body ?? "")}</p>
+</article>
+
+<style>
+  .card {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .tags {
+    list-style: none;
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h2 {
+      color: var(--color-text);
+
+      font-size: 1.5rem;
+      line-height: 1.3;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    span {
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+    }
+  }
+
+  .excerpt {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .post-author {
+    font-size: 0.85rem;
+    color: #6b7280;
+  }
+
+  .post-link {
+    text-decoration: none;
+    font-weight: 500;
+    color: #6366f1;
+  }
+
+  .post-link:hover {
+    text-decoration: underline;
+  }
+</style>

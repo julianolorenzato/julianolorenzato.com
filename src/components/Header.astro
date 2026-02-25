@@ -1,0 +1,214 @@
+---
+import ThemeSwitch from "./ThemeSwitch.astro";
+import { Icon } from "astro-icon/components";
+
+/* Header.astro */
+const navLinks = [
+  { text: "Blog", href: "/blog" },
+  { text: "Projects", href: "/projects" },
+  { text: "Resume", href: "/resume" },
+  { text: "About", href: "/about" },
+];
+---
+
+<header class="container">
+  <div class="inner">
+    <a href="/" class="logo">
+      JulianoLorenzato<span class="tld">.com</span>
+    </a>
+
+    <div class="nav-actions">
+      <nav class="main-nav">
+        <ul>
+          {
+            navLinks.map((link) => (
+              <li>
+                <a href={link.href}>{link.text}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <div class="divider"></div>
+
+      <a class="icon-link" target="_blank" href="https://github.com/julianolorenzato">
+        <Icon name="github" size={20} />
+      </a>
+      <a class="icon-link" target="_blank" href="https://www.linkedin.com/in/julianolorenzato/">
+        <Icon name="linkedin" size={20} />
+      </a>
+
+      <!-- <a class="icon-link" href="">
+        <Icon name="itch-io" size={20} />
+      </a> -->
+
+      <!-- <button class="search-btn" aria-label="Search">
+        <span class="search-placeholder">Search...</span>
+        <span class="kbd">CTRL K</span>
+      </button> -->
+
+      <!-- <a href="/rss.xml" aria-label="RSS Feed" class="icon-link">
+        <svg
+          viewBox="0 0 24 24"
+          width="20"
+          height="20"
+          stroke="currentColor"
+          stroke-width="2"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"
+          ></path><circle cx="5" cy="19" r="1"></circle></svg
+        >
+      </a> -->
+
+      <ThemeSwitch />
+    </div>
+  </div>
+</header>
+
+<style>
+  .container {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-text-muted);
+
+    font-family:
+      system-ui,
+      -apple-system,
+      sans-serif;
+  }
+
+  .inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--color-text);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+
+  .tld {
+    color: var(--color-text-muted);
+    font-weight: 600;
+  }
+
+  /* --- Navigation Group --- */
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  /* Links List */
+  .main-nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 1.5rem;
+  }
+
+  .main-nav a {
+    text-decoration: none;
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--color-text);
+    }
+  }
+
+  .divider {
+    width: 1px;
+    height: 24px;
+    background-color: var(--color-text-muted);
+    margin: 0 0.5rem;
+  }
+
+  .icon-link,
+  .theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--color-text);
+    }
+  }
+
+  /* --- Search Bar --- */
+  .search-btn {
+    display: flex;
+    align-items: center;
+    gap: 3rem; /* Space between text and KBD */
+
+    background-color: #f5f5f5;
+    border: 1px solid transparent;
+    border-radius: 6px;
+
+    padding: 0.4rem 0.75rem;
+    font-size: 0.9rem;
+    color: #737373;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .search-btn:hover {
+    background-color: #ededed;
+    border-color: #e5e5e5;
+  }
+
+  /* The "CTRL K" badge */
+  .kbd {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #a3a3a3;
+    background-color: #ffffff;
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid #e5e5e5;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  }
+
+  /* --- Responsive --- */
+  @media (max-width: 768px) {
+    .search-btn {
+      display: none; /* Hide search on small screens */
+    }
+    .main-nav ul {
+      gap: 1rem;
+    }
+    .main-nav a {
+      font-size: 0.85rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .main-nav {
+      display: none;
+    } /* Or move to hamburger menu */
+  }
+</style>

@@ -1,0 +1,78 @@
+---
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  headings: Heading[];
+}
+
+const { headings } = Astro.props;
+---
+
+<nav class="toc" aria-label="Table of Contents">
+  <div class="toc-header">Contents</div>
+  <ul>
+    {
+      headings
+        .filter((heading) => [2, 3].includes(heading.depth))
+        .map((heading) => (
+          <li>
+            <a class={`depth-${heading.depth}`} href={`#${heading.slug}`}>
+              {heading.text}
+            </a>
+          </li>
+        ))
+    }
+  </ul>
+</nav>
+
+<style>
+  .toc {
+    grid-area: navigation;
+
+    position: sticky;
+    top: 6rem;
+
+    align-self: start;
+    max-width: 300px;
+
+    height: calc(100vh - 8rem);
+    overflow-y: auto;
+  }
+
+  .toc-header {
+    text-align: center;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: lighter;
+    margin-bottom: 1.5rem;
+  }
+
+  .toc ul {
+    list-style: none;
+  }
+
+  .toc a {
+    line-height: 1.8;
+    transition: var(--transition-fast);
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+
+  /* --- Indentation Logic --- */
+  .depth-2 {
+    margin-left: 0rem;
+    color: var(--color-text);
+    font-weight: 900;
+  }
+
+  .depth-3 {
+    margin-left: 2rem;
+    color: var(--color-text-muted);
+  }
+</style>

@@ -1,0 +1,133 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Separator from "./Separator.astro";
+import Badge from "./Badge.astro";
+
+interface Props extends CollectionEntry<"blog"> {}
+
+const {
+  data: { title, tags, createdAt, updatedAt, draft },
+} = Astro.props;
+
+// Helper to format dates nicely (e.g., "October 24, 2023")
+const formatDate = (date: Date) => {
+  return new Intl.DateTimeFormat("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  }).format(date);
+};
+
+// Check if the post has been updated significantly after creation (more than 24h)
+const wasUpdated = updatedAt.getTime() - createdAt.getTime() > 86400000;
+---
+
+<div class="header">
+  {draft && <div class="draft-badge">Draft Preview</div>}
+
+  <h1 class="title">{title}</h1>
+
+  <div class="meta-row">
+    <div class="dates">
+      <time datetime={createdAt.toISOString()}>
+        {formatDate(createdAt)}
+      </time>
+      {
+        wasUpdated && (
+          <span class="updated-date">(Updated: {formatDate(updatedAt)})</span>
+        )
+      }
+    </div>
+
+    <ul class="tags">
+      {
+        tags.map((tag) => (
+          <li>
+            <Badge label={"#" + tag} />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <Separator />
+</div>
+
+<style>
+  .header {
+    grid-area: header;
+    padding-top: 1rem;
+    font-family:
+      system-ui,
+      -apple-system,
+      sans-serif;
+  }
+
+  /* --- Draft Badge --- */
+  .draft-badge {
+    display: inline-block;
+    background-color: #f5f5f5; /* Light gray */
+    color: #525252;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    border: 1px dashed #a3a3a3;
+    margin-bottom: 1rem;
+  }
+
+  /* --- Title --- */
+  .title {
+    font-size: 2.5rem; /* Large and bold */
+    line-height: 1.1;
+    font-weight: 800;
+    color: var(--color-text); /* Near Black */
+    margin: 0 0 1rem 0;
+    letter-spacing: -0.02em;
+  }
+
+  /* --- Meta Container --- */
+  .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    color: var(--color-text-muted); /* Medium Gray */
+    font-size: 0.9rem;
+  }
+
+  /* --- Dates --- */
+  .dates {
+    display: flex;
+    gap: 0.5rem;
+    align-items: baseline;
+  }
+
+  .updated-date {
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--color-primary); /* Lighter gray for secondary info */
+  }
+
+  /* --- Tags --- */
+  .tags {
+    list-style: none;
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  /* Mobile Adjustments */
+  @media (max-width: 600px) {
+    .title {
+      font-size: 2rem;
+    }
+    .meta-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+  }
+</style>

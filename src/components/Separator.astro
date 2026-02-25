@@ -1,0 +1,43 @@
+---
+interface Props {
+  label?: string;
+}
+
+const { label } = Astro.props;
+---
+
+<div class="pretty-hr-wrapper">
+  {label && <span class="pretty-hr-text">{label}</span>}
+</div>
+
+<style>
+  .pretty-hr-wrapper {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 2rem 0;
+  }
+
+  .pretty-hr-wrapper::before,
+  .pretty-hr-wrapper::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    /* Using your original gradient style */
+    background: linear-gradient(to right, transparent, var(--color-text-muted));
+  }
+
+  .pretty-hr-wrapper::after {
+    /* Flip the gradient for the right side so it fades out */
+    background: linear-gradient(to left, transparent, var(--color-text-muted));
+  }
+
+  .pretty-hr-text {
+    padding: 0 1.5rem;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+</style>
