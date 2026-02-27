@@ -5,8 +5,11 @@ import icon from "astro-icon";
 
 import sitemap from "@astrojs/sitemap";
 
+import cloudflare from "@astrojs/cloudflare";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://julianolorenzato.com",
   integrations: [icon(), sitemap()],
+  adapter: cloudflare(),
 });
