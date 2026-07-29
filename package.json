@@ -2,8 +2,9 @@
   "name": "julianolorenzato.com",
   "version": "0.0.1",
   "dependencies": {
-    "@astrojs/sitemap": "^3.7.0",
-    "astro": "^5.17.1",
+    "@astrojs/sitemap": "3.7.3",
+    "@openrouter/sdk": "^0.9.11",
+    "astro": "7.1.6",
     "astro-icon": "^1.1.5"
   },
   "scripts": {
