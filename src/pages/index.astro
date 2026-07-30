@@ -3,6 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import PostPreview from "../components/post/PostPreview.astro";
 import Separator from "../components/Separator.astro";
+import PageHeader from "@components/PageHeader.astro";
 
 const isProd = import.meta.env.PROD;
 const blogCollection = await getCollection("blog", ({ data }) =>
@@ -12,10 +13,9 @@ const blogCollection = await getCollection("blog", ({ data }) =>
 
 <BaseLayout title="Home">
   <div>
-    <h1>About Me</h1>
-
-    <p>
-      Computer Science Researcher and Open-Source Developer with 5 years of
+    <PageHeader
+      title="About Me"
+      description="Computer Science Researcher and Open-Source Developer with 5 years of
       experience building software, passionate about computer graphics,
       high-performance computing, GPU/GPGPU programming, and heterogeneous
       execution models. My work blends deep interest in compilers, virtual
@@ -23,8 +23,8 @@ const blogCollection = await getCollection("blog", ({ data }) =>
       building scalable systems and developer tooling. I'm also engaged in
       machine learning workflows and constantly exploring ways to improve
       developer experience through better automation, performance insights, and
-      tooling.
-    </p>
+      tooling."
+    />
 
     <Separator label="Latest Posts" />
 

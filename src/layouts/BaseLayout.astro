@@ -1,14 +1,15 @@
 ---
-import { Font, Image } from "astro:assets";
+import { Font } from "astro:assets";
 import Header from "../components/header/Header.astro";
 import "../styles/theme.css";
 import Sidebar from "../components/Sidebar.astro";
 
 interface Props {
   title: string;
+  sidebar?: boolean;
 }
 
-const { title } = Astro.props;
+const { title, sidebar = true } = Astro.props;
 ---
 
 <!doctype html>
@@ -28,8 +29,8 @@ const { title } = Astro.props;
     <Header />
 
     <div class="body-outer">
-      <div class="body-inner">
-        <Sidebar />
+      <div class="body-inner" class:list={[{ "no-sidebar": !sidebar }]}>
+        {sidebar && <Sidebar />}
 
         <main class="main-content">
           <slot />
@@ -64,6 +65,10 @@ const { title } = Astro.props;
     display: grid;
     grid-template-columns: var(--sidebar-width) 1fr;
     align-items: flex-start;
+
+    &.no-sidebar {
+      grid-template-columns: 1fr;
+    }
   }
 
   .main-content {

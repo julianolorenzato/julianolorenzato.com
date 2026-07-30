@@ -1,0 +1,82 @@
+[
+  {
+    "id": "relief.cpp",
+    "name": "relief.cpp",
+    "description": "🎠 C++/OpenGL Relief Mapping library with a standalone viewer.",
+    "url": "https://github.com/julianolorenzato/relief.cpp",
+    "homepage": null,
+    "language": "C++",
+    "stars": 0,
+    "topics": []
+  },
+  {
+    "id": "sylvaine",
+    "name": "sylvaine",
+    "description": "A LISP dialect compiled to WebAssembly",
+    "url": "https://github.com/julianolorenzato/sylvaine",
+    "homepage": null,
+    "language": "Rust",
+    "stars": 0,
+    "topics": []
+  },
+  {
+    "id": "venus",
+    "name": "venus",
+    "description": "🌕 A complete environment to assemble and run Venus.",
+    "url": "https://github.com/julianolorenzato/venus",
+    "homepage": null,
+    "language": "Rust",
+    "stars": 0,
+    "topics": [
+      "assembler",
+      "assembly",
+      "project",
+      "runtime",
+      "rust",
+      "virtual-machine"
+    ]
+  },
+  {
+    "id": "trendle",
+    "name": "trendle",
+    "description": "🔥 A self-hosted, real-time polling system.",
+    "url": "https://github.com/julianolorenzato/trendle",
+    "homepage": null,
+    "language": "Go",
+    "stars": 1,
+    "topics": [
+      "docker",
+      "go",
+      "golang",
+      "poll",
+      "postgresql",
+      "project",
+      "ranking",
+      "real-time",
+      "redis",
+      "self-hosted",
+      "voting",
+      "websocket"
+    ]
+  },
+  {
+    "id": "eluda",
+    "name": "eluda",
+    "description": "🔢 A library that provides support for writing Elixir programs targeting GPUs and other devices.",
+    "url": "https://github.com/julianolorenzato/eluda",
+    "homepage": null,
+    "language": "Elixir",
+    "stars": 0,
+    "topics": []
+  },
+  {
+    "id": "obscura",
+    "name": "obscura",
+    "description": "3D Rendering Engine",
+    "url": "https://github.com/julianolorenzato/obscura",
+    "homepage": null,
+    "language": "Rust",
+    "stars": 0,
+    "topics": []
+  }
+]

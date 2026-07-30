@@ -1,6 +1,7 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import PostPreview from "../../components/post/PostPreview.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import PostPreview from "@components/post/PostPreview.astro";
+import PageHeader from "@components/PageHeader.astro";
 import { getCollection } from "astro:content";
 
 const isProd = import.meta.env.PROD;
@@ -29,90 +30,104 @@ const months = [
 ---
 
 <BaseLayout title="Blog">
-  <div class="blog-page">
-    <div class="page-header">
-      <h1>Blog</h1>
-      <p>
-        Notes on graphics programming, GPUs, compilers, and everything in
-        between.
-      </p>
-    </div>
+  <PageHeader
+    title="Blog"
+    description="Notes on graphics programming, GPUs, compilers, and everything in between."
+  />
 
-    <div class="container">
+  <div class="container">
+    {
+      posts.length > 0 ? (
+        <div class="posts-list" id="posts-list">
+          {posts.map((post) => (
+            <div
+              class="post-entry"
+              data-tags={post.data.tags.join(",")}
+              data-month={monthKey(post.data.createdAt)}
+            >
+              <PostPreview {...post} />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p class="empty-state">No posts yet — check back soon.</p>
+      )
+    }
+
+    <p class="empty-state" id="empty-state" hidden>
+      No posts match the selected filters.
+    </p>
+
+    <aside class="sidebar">
       {
-        posts.length > 0 ? (
-          <div class="posts-list" id="posts-list">
-            {posts.map((post) => (
-              <div
-                class="post-entry"
-                data-tags={post.data.tags.join(",")}
-                data-month={monthKey(post.data.createdAt)}
-              >
-                <PostPreview {...post} />
-              </div>
-            ))}
+        tags.length > 0 && (
+          <div class="filter-group">
+            <h2>Tags</h2>
+            <ul>
+              <li>
+                <button
+                  class="filter-btn active"
+                  data-filter="tag"
+                  data-value="all"
+                >
+                  All <span class="count">{posts.length}</span>
+                </button>
+              </li>
+              {tags.map((tag) => (
+                <li>
+                  <button class="filter-btn" data-filter="tag" data-value={tag}>
+                    #{tag}
+                    <span class="count">
+                      {
+                        posts.filter((post) => post.data.tags.includes(tag))
+                          .length
+                      }
+                    </span>
+                  </button>
+                </li>
+              ))}
+            </ul>
           </div>
-        ) : (
-          <p class="empty-state">No posts yet — check back soon.</p>
         )
       }
 
-      <p class="empty-state" id="empty-state" hidden>
-        No posts match the selected filters.
-      </p>
-
-      <aside class="sidebar">
-        {
-          tags.length > 0 && (
-            <div class="filter-group">
-              <h2>Tags</h2>
-              <ul>
+      {
+        months.length > 0 && (
+          <div class="filter-group">
+            <h2>Archive</h2>
+            <ul>
+              <li>
+                <button
+                  class="filter-btn active"
+                  data-filter="month"
+                  data-value="all"
+                >
+                  All <span class="count">{posts.length}</span>
+                </button>
+              </li>
+              {months.map(({ key, label }) => (
                 <li>
-                  <button class="filter-btn active" data-filter="tag" data-value="all">
-                    All <span class="count">{posts.length}</span>
+                  <button
+                    class="filter-btn"
+                    data-filter="month"
+                    data-value={key}
+                  >
+                    {label}
+                    <span class="count">
+                      {
+                        posts.filter(
+                          (post) => monthKey(post.data.createdAt) === key,
+                        ).length
+                      }
+                    </span>
                   </button>
                 </li>
-                {tags.map((tag) => (
-                  <li>
-                    <button class="filter-btn" data-filter="tag" data-value={tag}>
-                      #{tag}
-                      <span class="count">
-                        {posts.filter((post) => post.data.tags.includes(tag)).length}
-                      </span>
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )
-        }
-
-        {
-          months.length > 0 && (
-            <div class="filter-group">
-              <h2>Archive</h2>
-              <ul>
-                <li>
-                  <button class="filter-btn active" data-filter="month" data-value="all">
-                    All <span class="count">{posts.length}</span>
-                  </button>
-                </li>
-                {months.map(({ key, label }) => (
-                  <li>
-                    <button class="filter-btn" data-filter="month" data-value={key}>
-                      {label}
-                      <span class="count">
-                        {posts.filter((post) => monthKey(post.data.createdAt) === key).length}
-                      </span>
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )
-        }
-      </aside>
-    </div>
+              ))}
+            </ul>
+          </div>
+        )
+      }
+    </aside>
   </div>
 </BaseLayout>
 
@@ -167,27 +182,6 @@ const months = [
 </script>
 
 <style>
-  .page-header {
-    font-family:
-      system-ui,
-      -apple-system,
-      sans-serif;
-    margin-bottom: 2rem;
-  }
-
-  .page-header h1 {
-    font-size: 2.5rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    color: var(--color-text);
-    margin-bottom: 0.5rem;
-  }
-
-  .page-header p {
-    color: var(--color-text-muted);
-    font-size: 1.05rem;
-  }
-
   .container {
     display: grid;
     gap: 3rem;

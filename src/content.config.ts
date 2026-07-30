@@ -1,6 +1,6 @@
 import { defineCollection } from "astro:content";
 import { z } from "astro/zod";
-import { glob } from "astro/loaders";
+import { file, glob } from "astro/loaders";
 const postTags = z.enum([
     "graphics",
     "gpu",
@@ -22,4 +22,17 @@ const blog = defineCollection({
     }),
 });
 
-export const collections = { blog };
+const repos = defineCollection({
+    loader: file("src/content/repos.json"),
+    schema: z.object({
+        name: z.string(),
+        description: z.string().nullable(),
+        url: z.string(),
+        homepage: z.string().nullable(),
+        language: z.string().nullable(),
+        stars: z.number(),
+        topics: z.string().array(),
+    }),
+});
+
+export const collections = { blog, repos };

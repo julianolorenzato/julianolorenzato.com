@@ -1,6 +1,117 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import PageHeader from "@components/PageHeader.astro";
+import { Icon } from "astro-icon/components";
+import { getCollection } from "astro:content";
+import { getLanguageColor } from "@utils/language-colors";
+
+const projects = (await getCollection("repos")).map((entry) => entry.data);
 ---
 
 <BaseLayout title="Projects">
+  <PageHeader
+    title="Projects"
+    description="A selection of things I've built and/or worked on."
+  />
+
+  <div class="projects-grid">
+    {
+      projects.length === 0 ? (
+        <p class="empty-state">No projects listed yet, check back soon.</p>
+      ) : (
+        projects.map((project) => (
+          <a
+            class="project-card"
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={`--language-color: ${getLanguageColor(project.language)}`}
+          >
+            <div class="card-header">
+              <h2>{project.name}</h2>
+              <Icon name="github" size={20} />
+            </div>
+
+            {project.description && (
+              <p class="description">{project.description}</p>
+            )}
+
+            {project.language && (
+              <div class="meta">
+                <span class="language">{project.language}</span>
+              </div>
+            )}
+          </a>
+        ))
+      )
+    }
+  </div>
 </BaseLayout>
+
+<style>
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.25rem;
+    border: 1px solid var(--color-border);
+    border-top: 4px solid var(--language-color, var(--color-border));
+    border-radius: var(--radius-sm);
+    color: var(--color-text);
+    transition:
+      border-color var(--transition-fast),
+      background-color var(--transition-fast);
+  }
+
+  .project-card:hover {
+    border-left-color: var(--color-primary);
+    border-right-color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
+    background-color: var(--color-surface-elevated);
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .card-header h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+
+  .card-header :global(svg) {
+    flex-shrink: 0;
+    color: var(--color-text-muted);
+  }
+
+  .description {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    flex-grow: 1;
+  }
+
+  .meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+  }
+
+  .empty-state {
+    color: var(--color-text-muted);
+    text-align: center;
+    padding: 3rem 0;
+    font-style: italic;
+    grid-column: 1 / -1;
+  }
+</style>
