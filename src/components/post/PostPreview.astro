@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { generateExcerpt, calculateReadingTime } from "../utils";
-import Badge from "./Badge.astro";
+import { generateExcerpt, calculateReadingTime } from "@utils/post";
+import Badge from "@components/Badge.astro";
 
 interface Props extends CollectionEntry<"blog"> {}
 

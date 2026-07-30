@@ -2,8 +2,8 @@
 import type { GetStaticPathsOptions, GetStaticPathsResult } from "astro";
 import { type CollectionEntry, render, getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import PostNavigation from "../../components/PostNavigation.astro";
-import PostHeader from "../../components/PostHeader.astro";
+import PostNavigation from "../../components/post/PostNavigation.astro";
+import PostHeader from "../../components/post/PostHeader.astro";
 import { Code } from "astro:components";
 
 export async function getStaticPaths(

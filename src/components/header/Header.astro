@@ -1,5 +1,5 @@
 ---
-import ThemeSwitch from "./ThemeSwitch.astro";
+import ThemeSwitch from "../ThemeSwitch.astro";
 import { Icon } from "astro-icon/components";
 
 /* Header.astro */
@@ -8,7 +8,6 @@ const navLinks = [
   { text: "Blog", href: "/blog" },
   { text: "Projects", href: "/projects" },
   { text: "Resume", href: "/resume" },
-  { text: "About", href: "/about" },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -75,17 +74,15 @@ const isActive = (href: string) =>
 
 <style>
   .container {
+    width: 100%;
+    height: var(--header-height);
     position: sticky;
     top: 0;
     z-index: 100;
 
     display: flex;
     align-items: center;
-
-    width: 100%;
-    height: var(--header-height);
     padding: 0.75rem 1.5rem;
-
     background-color: var(--color-surface);
     border-bottom: 1px solid var(--color-text-muted);
 
@@ -98,6 +95,7 @@ const isActive = (href: string) =>
   .inner {
     max-width: var(--content-max-width);
     width: 100%;
+
     margin: 0 auto;
     display: flex;
     align-items: center;

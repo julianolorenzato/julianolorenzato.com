@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import PostPreview from "../../components/PostPreview.astro";
+import PostPreview from "../../components/post/PostPreview.astro";
 import { getCollection } from "astro:content";
 
 const isProd = import.meta.env.PROD;
@@ -28,7 +28,7 @@ const months = [
 ].map(([key, date]) => ({ key, label: monthFormatter.format(date) }));
 ---
 
-<BaseLayout title="Blog - Juliano Lorenzato" showHero={false}>
+<BaseLayout title="Blog">
   <div class="blog-page">
     <div class="page-header">
       <h1>Blog</h1>
