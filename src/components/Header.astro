@@ -30,7 +30,10 @@ const isActive = (href: string) =>
           {
             navLinks.map((link) => (
               <li>
-                <a href={link.href} aria-current={isActive(link.href) ? "page" : undefined}>
+                <a
+                  href={link.href}
+                  aria-current={isActive(link.href) ? "page" : undefined}
+                >
                   {link.text}
                 </a>
               </li>
@@ -40,21 +43,6 @@ const isActive = (href: string) =>
       </nav>
 
       <div class="divider"></div>
-
-      <a
-        class="icon-link"
-        target="_blank"
-        href="https://github.com/julianolorenzato"
-      >
-        <Icon name="github" size={20} />
-      </a>
-      <a
-        class="icon-link"
-        target="_blank"
-        href="https://www.linkedin.com/in/julianolorenzato/"
-      >
-        <Icon name="linkedin" size={20} />
-      </a>
 
       <!-- <a class="icon-link" href="">
         <Icon name="itch-io" size={20} />
@@ -91,7 +79,11 @@ const isActive = (href: string) =>
     top: 0;
     z-index: 100;
 
+    display: flex;
+    align-items: center;
+
     width: 100%;
+    height: var(--header-height);
     padding: 0.75rem 1.5rem;
 
     background-color: var(--color-surface);
@@ -104,7 +96,8 @@ const isActive = (href: string) =>
   }
 
   .inner {
-    max-width: 1200px;
+    max-width: var(--content-max-width);
+    width: 100%;
     margin: 0 auto;
     display: flex;
     align-items: center;

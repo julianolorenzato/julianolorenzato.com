@@ -1,7 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
+import Hero from "../components/Hero.astro";
 import PostPreview from "../components/PostPreview.astro";
+import Separator from "../components/Separator.astro";
 
 const isProd = import.meta.env.PROD;
 const blogCollection = await getCollection("blog", ({ data }) =>
@@ -9,16 +11,32 @@ const blogCollection = await getCollection("blog", ({ data }) =>
 );
 ---
 
-<BaseLayout
-  title="Juliano Lorenzato - Home"
-  showHero={true}
-  separatorLabel="Latest Posts"
->
-  <div class="latest-posts">
-    {blogCollection.map((post) => <PostPreview {...post} />)}
-  </div>
+<BaseLayout title="Juliano Lorenzato - Home" layout="horizontal">
+  <!-- <Hero layout="vertical" /> -->
 
-  <a href="/blog" class="view-all">View all posts &rarr;</a>
+  <div>
+    <h1>About Me</h1>
+
+    <p>
+      Computer Science Researcher and Open-Source Developer with 5 years of
+      experience building software, passionate about computer graphics,
+      high-performance computing, GPU/GPGPU programming, and heterogeneous
+      execution models. My work blends deep interest in compilers, virtual
+      machines, and programming language design with practical experience
+      building scalable systems and developer tooling. I'm also engaged in
+      machine learning workflows and constantly exploring ways to improve
+      developer experience through better automation, performance insights, and
+      tooling.
+    </p>
+
+    <Separator label="Latest Posts" />
+
+    <div class="latest-posts">
+      {blogCollection.map((post) => <PostPreview {...post} />)}
+    </div>
+
+    <a href="/blog" class="view-all">View all posts &rarr;</a>
+  </div>
 </BaseLayout>
 
 <style>

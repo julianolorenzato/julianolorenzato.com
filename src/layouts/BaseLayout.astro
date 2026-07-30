@@ -2,16 +2,13 @@
 import { Font, Image } from "astro:assets";
 import Header from "../components/Header.astro";
 import "../styles/global.css";
-import avatar from "../assets/avatar.png";
-import Separator from "../components/Separator.astro";
+import Sidebar from "../components/Sidebar.astro";
 
 interface Props {
   title: string;
-  showHero: boolean;
-  separatorLabel?: string;
 }
 
-const { title, showHero, separatorLabel } = Astro.props;
+const { title } = Astro.props;
 ---
 
 <!doctype html>
@@ -26,64 +23,60 @@ const { title, showHero, separatorLabel } = Astro.props;
 
     <title>{title}</title>
   </head>
+
   <body>
     <Header />
-    <main class="main-content">
-      {
-        showHero && (
-          <div class="hero">
-            <Image class="avatar" alt="avatar" src={avatar} />
 
-            <div class="info">
-              <h1>Juliano Lorenzato</h1>
+    <div class="container">
+      <div class="inner">
+        <Sidebar />
 
-              <label>
-                Graphics Engineer • Scientific Researcher • M.Sc. Student in
-                Computer Science • Polymath, Autodidact & Lifelong Learner
-              </label>
-            </div>
-          </div>
-
-            <Separator label={separatorLabel} />
-        )
-      }
-
-      <slot />
-    </main>
+        <main class="content">
+          <slot />
+        </main>
+      </div>
+    </div>
   </body>
 </html>
 
 <style is:global>
+  :root {
+    --header-height: 4rem;
+    --sidebar-width: 16rem;
+    --content-max-width: 1200px;
+    --padding-from-header: 2rem;
+  }
+
   body {
     font-family: var(--font-roboto);
   }
 </style>
 
 <style>
-  .hero {
+  .container {
     display: flex;
-    align-items: center;
+    justify-content: center;
+    /* padding: 0rem 6rem 2rem 6rem; */
+    /* display: flex;
+    flex-direction: row;
     gap: 2rem;
 
-    .avatar {
-      object-fit: cover;
-      width: 10rem;
-      height: 10rem;
-      border: 1px solid var(--color-text);
-      /* border-radius: 50%; */
-      filter: grayscale(50%);
-    }
-
-    .info {
-      label {
-        font-style: italic;
-        color: var(--color-text-muted);
-        font-weight: thin;
-      }
-    }
+    height: calc(100vh - var(--header-height)); */
   }
-  .main-content {
-    padding: 0rem 12rem 2rem 12rem;
-    margin-top: 2rem;
+
+  .inner {
+    width: 100%;
+    max-width: var(--content-max-width);
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr;
+    align-items: flex-start;
+  }
+
+  .content {
+    padding: var(--padding-from-header) 6rem 2rem 6rem;
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+    overflow-y: auto;
   }
 </style>
