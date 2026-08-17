@@ -1,5 +1,5 @@
 {
-  "name": "julianolorenzato.com",
+  "name": "julianolorenzato-com",
   "version": "0.0.1",
   "dependencies": {
     "@astrojs/sitemap": "3.7.3",
