@@ -9,6 +9,7 @@ const postTags = z.enum([
     "c++",
     "hpc",
     "parallelism",
+    "shaders"
 ]);
 
 const blog = defineCollection({
