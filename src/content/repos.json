@@ -4,10 +4,15 @@
     "name": "relief.cpp",
     "description": "🎠 C++/OpenGL Relief Mapping library with a standalone viewer.",
     "url": "https://github.com/julianolorenzato/relief.cpp",
-    "homepage": null,
+    "homepage": "https://julianolorenzato.github.io/relief.cpp/",
     "language": "C++",
     "stars": 0,
-    "topics": []
+    "topics": [
+      "3d",
+      "graphics",
+      "relief-mapping",
+      "shaders"
+    ]
   },
   {
     "id": "sylvaine",
