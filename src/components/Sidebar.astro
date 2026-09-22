@@ -1,137 +1,144 @@
 ---
-import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import avatar from "@assets/avatar.png";
+import { Icon } from "astro-icon/components";
 ---
 
 <aside class:list={["hero", "sidebar-normalization"]}>
-  <Image class="avatar" alt="avatar" src={avatar} />
+	<Image class="avatar" alt="avatar" src={avatar} />
 
-  <div class="info">
-    <h1>Juliano Lorenzato</h1>
+	<div class="info">
+		<h1>Juliano Lorenzato</h1>
 
-    <ul>
-      <li>Graphics Software Engineer</li>
-      <li>Scientific Researcher</li>
-      <li>M.Sc. Student in Computer Science</li>
-      <!-- <li>Polymath, Autodidact & Lifelong Learner</li> -->
-    </ul>
-  </div>
+		<ul>
+			<li>Graphics Software Engineer</li>
+			<li>Scientific Researcher</li>
+			<li>M.Sc. Student in Computer Science</li>
+			<!-- <li>Polymath, Autodidact & Lifelong Learner</li> -->
+		</ul>
+	</div>
 
-  <div class="social-chips">
-    <div class="chip">
-      <Icon name="map-pin" size={18} />
-      Brazil
-    </div>
-    <a class="chip clickable" href="mailto:julianolorenzato@gmail.com">
-      <Icon name="mail" size={18} />
-      Email
-    </a>
-    <a
-      class="chip clickable"
-      target="_blank"
-      href="https://github.com/julianolorenzato"
-    >
-      <Icon name="github" size={18} />
-      GitHub
-    </a>
-    <a
-      class="chip clickable"
-      target="_blank"
-      href="https://www.linkedin.com/in/julianolorenzato/"
-    >
-      <Icon name="linkedin" size={18} />
-      LinkedIn
-    </a>
-  </div>
+	<div class="social-chips">
+		<div class="chip">
+			<Icon name="map-pin" size={18} />
+			Brazil
+		</div>
+		<a class="chip clickable" href="mailto:julianolorenzato@gmail.com">
+			<Icon name="mail" size={18} />
+			Email
+		</a>
+		<a
+			class="chip clickable"
+			target="_blank"
+			href="https://github.com/julianolorenzato"
+		>
+			<Icon name="github" size={18} />
+			GitHub
+		</a>
+		<a
+			class="chip clickable"
+			target="_blank"
+			href="https://www.linkedin.com/in/julianolorenzato/"
+		>
+			<Icon name="linkedin" size={18} />
+			LinkedIn
+		</a>
+	</div>
 </aside>
 
 <style>
-  .sidebar-normalization {
-    padding-top: var(--padding-from-header);
-    width: var(--sidebar-width);
-    position: sticky;
-    top: var(--header-height);
-    max-height: calc(100vh - var(--header-height));
-  }
+.sidebar-normalization {
+	padding-top: var(--padding-from-header);
+	width: var(--sidebar-width);
+	position: sticky;
+	top: var(--header-height);
+	max-height: calc(100vh - var(--header-height));
+}
 
-  .hero {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-shrink: 0;
-    gap: 2rem;
+.hero {
+	display: flex;
+	flex-direction: column;
+	@media (max-width: 600px) {
+		flex-direction: row;
+		position: static;
+	}
+	align-items: center;
+	flex-shrink: 0;
+	gap: 2rem;
 
-    .avatar {
-      object-fit: cover;
-      width: 10rem;
-      height: 10rem;
-      border: 1px solid var(--color-text);
-      /* border-radius: 50%; */
-      filter: grayscale(50%);
-    }
+	.avatar {
+		object-fit: cover;
+		width: 10rem;
+		height: 10rem;
+		border: 1px solid var(--color-text);
+		/* border-radius: 50%; */
+		filter: grayscale(50%);
+	}
 
-    .info {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      text-align: center;
+	.info {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.5rem;
+		text-align: center;
 
-      h1 {
-        font-size: 1.6rem;
-        font-weight: 700;
-        letter-spacing: -0.02em;
-        margin: 0;
-        color: var(--color-text);
-      }
+		h1 {
+			font-size: 1.6rem;
+			font-weight: 700;
+			letter-spacing: -0.02em;
+			margin: 0;
+			color: var(--color-text);
+		}
 
-      ul {
-        display: flex;
-        flex-direction: column;
-        gap: 0.15rem;
-        padding: 0;
-        list-style: none;
-        margin: 0;
-        font-size: 0.85rem;
-        font-style: italic;
-        font-weight: 500;
-        letter-spacing: 0.01em;
-        color: var(--color-text-muted);
-      }
+		ul {
+			display: flex;
+			flex-direction: column;
+			gap: 0.15rem;
+			padding: 0;
+			list-style: none;
+			margin: 0;
+			font-size: 0.85rem;
+			font-style: italic;
+			font-weight: 500;
+			letter-spacing: 0.01em;
+			color: var(--color-text-muted);
+		}
 
-      label {
-        font-style: italic;
-        color: var(--color-text-muted);
-        font-weight: thin;
-      }
-    }
+		label {
+			font-style: italic;
+			color: var(--color-text-muted);
+			font-weight: thin;
+		}
+	}
 
-    .social-chips {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: flex-start;
-      align-self: stretch;
-      gap: 0.6rem;
-    }
-  }
+	.social-chips {
+		display: grid;
+		@media (max-width: 600px) {
+			display: none;
+		}
+		grid-template-columns: 1fr 1fr;
+		align-items: flex-start;
+		align-self: stretch;
+		gap: 0.6rem;
+	}
+}
 
-  .chip {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
+.chip {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
 
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--color-text-muted);
+	font-size: 0.9rem;
+	font-weight: 500;
+	color: var(--color-text-muted);
 
-    &.clickable {
-      cursor: pointer;
-      transition: color var(--transition-fast);
+	&.clickable {
+		cursor: pointer;
+		transition: color var(--transition-fast);
 
-      &:hover {
-        color: var(--color-text);
-      }
-    }
-  }
+		&:hover {
+			color: var(--color-text);
+		}
+	}
+}
 </style>
