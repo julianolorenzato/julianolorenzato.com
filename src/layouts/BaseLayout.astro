@@ -41,12 +41,9 @@ const { title, sidebar = true } = Astro.props;
 </html>
 
 <style is:global>
-  :root {
-    --header-height: 4rem;
-    --sidebar-width: 16rem;
-    --content-max-width: 1440px;
-    --padding-from-header: 2rem;
-  }
+    @import "tailwindcss";
+
+
 
   body {
     font-family: var(--font-roboto);

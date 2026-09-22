@@ -1,0 +1,24 @@
+{
+    "lsp": {
+        "biome": {
+            "binary": {
+                "path": "./node_modules/.bin/biome",
+                "arguments": [
+                    "lsp-proxy"
+                ]
+            }
+        }
+    },
+    "languages": {
+        "Astro": {
+            "language_servers": [
+                "biome"
+            ],
+            "formatter": {
+                "language_server": {
+                    "name": "biome"
+                }
+            }
+        }
+    }
+}

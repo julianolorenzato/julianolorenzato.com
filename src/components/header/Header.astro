@@ -4,82 +4,77 @@ import MainNav from "./MainNav.astro";
 import MobileNav from "./MobileNav.astro";
 
 const navLinks = [
-  { text: "Home", href: "/" },
-  { text: "Blog", href: "/blog" },
-  { text: "Projects", href: "/projects" },
-  { text: "Resume", href: "/resume" },
+	{ text: "Home", href: "/" },
+	{ text: "Blog", href: "/blog" },
+	{ text: "Projects", href: "/projects" },
+	{ text: "Resume", href: "/resume" },
 ];
 
 const currentPath = Astro.url.pathname;
 const isActive = (href: string) =>
-  href === "/"
-    ? currentPath === "/"
-    : currentPath === href || currentPath.startsWith(href + "/");
+	href === "/"
+		? currentPath === "/"
+		: currentPath === href || currentPath.startsWith(`${href}/`);
 ---
 
-<header class="container">
-  <div class="inner">
-    <a href="/" class="logo">
-      JulianoLorenzato<span class="tld">.com</span>
-    </a>
+<header class="con">
+	<div class="inner">
+		<a href="/" class="logo"> JulianoLorenzato<span class="tld">.com</span> </a>
 
-    <div class="nav-actions">
-      <MainNav navLinks={navLinks} isActive={isActive} />
+		<div class="nav-actions">
+			<MainNav navLinks={navLinks} isActive={isActive} />
 
-      <ThemeSwitch />
+			<ThemeSwitch />
 
-      <MobileNav navLinks={navLinks} isActive={isActive} />
-    </div>
-  </div>
+			<MobileNav navLinks={navLinks} isActive={isActive} />
+		</div>
+	</div>
 </header>
 
 <style>
-  .container {
-    width: 100%;
-    height: var(--header-height);
-    position: sticky;
-    top: 0;
-    z-index: 100;
+.con {
+	width: 100%;
+	height: var(--header-height);
+	position: sticky;
+	top: 0;
+	z-index: 100;
 
-    display: flex;
-    align-items: center;
-    padding: 0.75rem 1.5rem;
-    background-color: var(--color-surface);
-    border-bottom: 1px solid var(--color-text-muted);
+	display: flex;
+	align-items: center;
+	padding: 0.75rem 1.5rem;
+	background-color: var(--color-surface);
+	border-bottom: 1px solid var(--color-text-muted);
 
-    font-family:
-      system-ui,
-      -apple-system,
-      sans-serif;
-  }
+	font-family: system-ui, -apple-system, sans-serif;
+}
 
-  .inner {
-    max-width: var(--content-max-width);
-    width: 100%;
+.inner {
+	max-width: var(--content-max-width);
+	width: 100%;
 
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
 
-  .logo {
-    font-size: 1.25rem;
-    font-weight: 800;
-    color: var(--color-text);
-    text-decoration: none;
-    letter-spacing: -0.02em;
-  }
+.logo {
+	font-size: 1.25rem;
+	font-weight: 800;
+	color: var(--color-text);
+	text-decoration: none;
+	letter-spacing: -0.02em;
+}
 
-  .tld {
-    color: var(--color-text-muted);
-    font-weight: 600;
-  }
+.tld {
+	color: var(--color-text-muted);
+	font-weight: 600;
+}
 
-  /* --- Navigation Group --- */
-  .nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
+/* --- Navigation Group --- */
+.nav-actions {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
 </style>
