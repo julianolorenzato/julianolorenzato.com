@@ -5,8 +5,8 @@ import "../styles/theme.css";
 import Sidebar from "../components/Sidebar.astro";
 
 interface Props {
-  title: string;
-  sidebar?: boolean;
+	title: string;
+	sidebar?: boolean;
 }
 
 const { title, sidebar = true } = Astro.props;
@@ -14,65 +14,59 @@ const { title, sidebar = true } = Astro.props;
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <Font cssVariable="--font-roboto" preload />
+		<Font cssVariable="--font-roboto" preload />
 
-    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+		<link rel="shortcut icon" href="favicon.png" type="image/x-icon">
 
-    <title>{title} - Juliano Lorenzato</title>
-  </head>
+		<title>{title} - Juliano Lorenzato</title>
+	</head>
 
-  <body>
-    <Header />
+	<body>
+		<Header />
 
-    <div class="body-outer">
-      <div class="body-inner" class:list={[{ "no-sidebar": !sidebar }]}>
-        {sidebar && <Sidebar />}
+		<div class="body-outer">
+			<div class="body-inner" class:list={[{ "no-sidebar": !sidebar }]}>
+				{sidebar && <Sidebar />}
 
-        <main class="main-content">
-          <slot />
-        </main>
-      </div>
-    </div>
-  </body>
+				<main class="main-content">
+					<slot />
+				</main>
+			</div>
+		</div>
+	</body>
 </html>
 
-<style is:global>
-    @import "tailwindcss";
-
-
-
-  body {
-    font-family: var(--font-roboto);
-  }
-</style>
-
 <style>
-  .body-outer {
-    display: flex;
-    justify-content: center;
-    padding: 0 2rem;
-  }
+body {
+	font-family: var(--font-roboto);
+}
 
-  .body-inner {
-    width: 100%;
-    max-width: var(--content-max-width);
-    display: grid;
-    gap: 2rem;
-    grid-template-columns: var(--sidebar-width) 1fr;
-    align-items: flex-start;
+.body-outer {
+	display: flex;
+	justify-content: center;
+	padding: 0 2rem;
+}
 
-    &.no-sidebar {
-      grid-template-columns: 1fr;
-    }
-  }
+.body-inner {
+	width: 100%;
+	max-width: var(--content-max-width);
+	display: grid;
+	gap: 2rem;
+	grid-template-columns: var(--sidebar-width) 1fr;
+	align-items: flex-start;
 
-  .main-content {
-    padding-top: var(--padding-from-header);
-    padding-bottom: 2rem;
-    flex: 1;
-  }
+	&.no-sidebar {
+		grid-template-columns: 1fr;
+	}
+}
+
+.main-content {
+	padding-top: var(--padding-from-header);
+	padding-bottom: 2rem;
+	flex: 1;
+}
 </style>
