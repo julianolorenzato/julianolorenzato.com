@@ -23,16 +23,20 @@ import avatar from "@assets/avatar.png";
       <Icon name="map-pin" size={18} />
       Brazil
     </div>
-    <a class="chip" href="mailto:julianolorenzato@gmail.com">
+    <a class="chip clickable" href="mailto:julianolorenzato@gmail.com">
       <Icon name="mail" size={18} />
       Email
     </a>
-    <a class="chip" target="_blank" href="https://github.com/julianolorenzato">
+    <a
+      class="chip clickable"
+      target="_blank"
+      href="https://github.com/julianolorenzato"
+    >
       <Icon name="github" size={18} />
       GitHub
     </a>
     <a
-      class="chip"
+      class="chip clickable"
       target="_blank"
       href="https://www.linkedin.com/in/julianolorenzato/"
     >
@@ -68,15 +72,31 @@ import avatar from "@assets/avatar.png";
     }
 
     .info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      text-align: center;
+
       h1 {
-        font-size: x-large;
+        font-size: 1.6rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        margin: 0;
+        color: var(--color-text);
       }
 
       ul {
-        padding-left: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.15rem;
+        padding: 0;
         list-style: none;
         margin: 0;
+        font-size: 0.85rem;
         font-style: italic;
+        font-weight: 500;
+        letter-spacing: 0.01em;
         color: var(--color-text-muted);
       }
 
@@ -88,8 +108,8 @@ import avatar from "@assets/avatar.png";
     }
 
     .social-chips {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       align-items: flex-start;
       align-self: stretch;
       gap: 0.6rem;
@@ -105,10 +125,13 @@ import avatar from "@assets/avatar.png";
     font-weight: 500;
     color: var(--color-text-muted);
 
-    transition: color var(--transition-fast);
+    &.clickable {
+      cursor: pointer;
+      transition: color var(--transition-fast);
 
-    &:hover {
-      color: var(--color-text);
+      &:hover {
+        color: var(--color-text);
+      }
     }
   }
 </style>

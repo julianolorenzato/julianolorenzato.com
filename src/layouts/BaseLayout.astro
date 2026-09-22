@@ -44,7 +44,7 @@ const { title, sidebar = true } = Astro.props;
   :root {
     --header-height: 4rem;
     --sidebar-width: 16rem;
-    --content-max-width: 1200px;
+    --content-max-width: 1440px;
     --padding-from-header: 2rem;
   }
 
@@ -57,12 +57,14 @@ const { title, sidebar = true } = Astro.props;
   .body-outer {
     display: flex;
     justify-content: center;
+    padding: 0 2rem;
   }
 
   .body-inner {
     width: 100%;
     max-width: var(--content-max-width);
     display: grid;
+    gap: 2rem;
     grid-template-columns: var(--sidebar-width) 1fr;
     align-items: flex-start;
 
